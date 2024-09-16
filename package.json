@@ -1,6 +1,7 @@
 {
   "name": "atlas",
   "private": true,
+  "proxy": "https://script.google.com",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

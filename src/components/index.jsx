@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Loader from "./loader";
 
 const index = () => {
   const [formData, setFormData] = useState({ name: "", email: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -11,29 +13,35 @@ const index = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("formData", formData);
+    const scriptURL ="https://sheet.best/api/sheets/1fa9a6b6-db87-4a0a-a166-23d693217f4f";
 
-    // Replace with your Google Apps Script Web App URL
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyTE_tdO05PuHpDbnnLc2K8F9zJEATvvM3-n0whkTCilw7ZJfuA-vSTNjhsnMONeTTEqQ/exec";
+    if (formData?.name && formData?.email) {
+      setLoading(true);
+      try {
+        const res = await axios.post(scriptURL, formData, {
+          headers: {
+            "Content-Type": "application/json", // Ensure JSON content type
+          },
+          withCredentials: false, // Explicitly prevent sending credentials
+        });
 
-    try {
-      await axios.post(scriptURL, formData, {
-        headers: {
-          'Content-Type': 'application/json', // Ensure JSON content type
-        },
-        withCredentials: false  // Explicitly prevent sending credentials
-      });
-      
-      alert('Data saved successfully!');
-    } catch (error) {
-      console.error('Error saving data', error);
-      alert('Failed to save data.');
+        console.log("res", res);
+        setFormData({ name: "", email: "" })
+        setLoading(false);
+        alert("Data saved successfully!");
+      } catch (error) {
+        console.error("Error saving data", error);
+        setLoading(false);
+        alert("Failed to save data.");
+      }
+    } else {
+      alert("Name and email is mandatory.");
     }
-};
-
+  };
 
   return (
     <>
+      <Loader loading={loading} />
       <div className="min-h-screen grid gap-6 grid-cols-12 p-4 bg-[#fffcf5]">
         {/* Main Content - Offset by 1 column on both sides, spans 10 columns */}
         <div className="col-start-2 col-span-10 grid gap-6 md:grid-cols-10">
@@ -62,7 +70,7 @@ const index = () => {
                 <div className="w-[581px] mb-1 left-0 top-0 text-gray-700 text-xl font-bold font-['Inter']">
                   In this first volume we’ll address:
                 </div>
-                <div className="w-[510px] ms-2 top-[32px]">
+                <div className="w-[510px] ms-5 top-[32px]">
                   <span className="text-[#17c3b2] text-xl font-semibold font-['Inter']">
                     {"->"}
                   </span>
@@ -123,7 +131,7 @@ const index = () => {
                   </div>
                 </div>
 
-                <button className="w-full md:w-[500px] h-[85px] mt-6 bg-[#17c3b2] rounded-lg shadow border border-[#2b2b2b] text-black text-2xl font-bold flex justify-center items-center">
+                <button className="w-full md:w-[500px] h-[85px] mt-6 bg-[#17c3b2] rounded-lg shadow border border-[#2b2b2b] ease-in-out hover:bg-[#14a89e] hover:text-white text-black text-2xl font-bold flex justify-center items-center">
                   Get it immediately
                 </button>
               </form>
