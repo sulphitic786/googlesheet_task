@@ -17,12 +17,20 @@ const index = () => {
     const scriptURL = "https://script.google.com/macros/s/AKfycbyTE_tdO05PuHpDbnnLc2K8F9zJEATvvM3-n0whkTCilw7ZJfuA-vSTNjhsnMONeTTEqQ/exec";
 
     try {
-      await axios.post(scriptURL, formData);  
+      await axios.post(scriptURL, formData, {
+        headers: {
+          'Content-Type': 'application/json', // Ensure JSON content type
+        },
+        withCredentials: false  // Explicitly prevent sending credentials
+      });
+      
       alert('Data saved successfully!');
     } catch (error) {
       console.error('Error saving data', error);
+      alert('Failed to save data.');
     }
-  };
+};
+
 
   return (
     <>
