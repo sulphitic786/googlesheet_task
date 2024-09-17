@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+
 import Loader from "./loader";
 
 const index = () => {
   const [formData, setFormData] = useState({ name: "", email: "" });
   const [loading, setLoading] = useState(false);
+  const pdfUrl = "https://drive.google.com/file/d/1cW9xxZucYY2pAGntr5oDI0SKzWjIG3Sw/view?usp=drive_link"
+  const fileURL ="https://sheet.best/api/sheets/1fa9a6b6-db87-4a0a-a166-23d693217f4f";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -13,12 +16,11 @@ const index = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const scriptURL ="https://sheet.best/api/sheets/1fa9a6b6-db87-4a0a-a166-23d693217f4f";
 
     if (formData?.name && formData?.email) {
       setLoading(true);
       try {
-        const res = await axios.post(scriptURL, formData, {
+        const res = await axios.post(fileURL, formData, {
           headers: {
             "Content-Type": "application/json", // Ensure JSON content type
           },
@@ -28,6 +30,7 @@ const index = () => {
         console.log("res", res);
         setFormData({ name: "", email: "" })
         setLoading(false);
+        openPDF();
         alert("Data saved successfully!");
       } catch (error) {
         console.error("Error saving data", error);
@@ -39,26 +42,30 @@ const index = () => {
     }
   };
 
+  const openPDF = () => {
+    window.open(pdfUrl); // This opens the PDF in a new tab
+  };
+
   return (
     <>
       <Loader loading={loading} />
-      <div className="min-h-screen grid gap-6 grid-cols-12 p-4 bg-[#fffcf5]">
+      <div className="min-h-screen justify-self-center grid xl:gap-6 grid-cols-12 lg:p-4 md:p-6 bg-[#fffcf5]">
         {/* Main Content - Offset by 1 column on both sides, spans 10 columns */}
-        <div className="col-start-2 col-span-10 grid gap-6 md:grid-cols-10">
+        <div className="col-span-12 lg:col-start-2 lg:col-span-10 justify-self-center grid gap-2 md:grid-cols-11">
           {/* First Section */}
-          <div className="col-span-10 md:col-span-6 relative">
+          <div className="col-span-6 md:col-span-6 relative md:p-0 ps-5">
             <div>
-              <div className="h-[116px] top-[47px]">
-                <span className="text-[#ffcb77] text-5xl font-bold font-['Inter']">
+              <div className="xl:h-[116px] xl:text-5xl lg:text-3xl text-4xl text-center top-[50px]">
+                <span className="text-[#ffcb77] font-bold font-['Inter']">
                   #1
                 </span>
-                <span className="text-[#2b2539] text-5xl font-bold font-['Inter']">
+                <span className="text-[#2b2539] font-bold font-['Inter']">
                   {" "}
                   Framework to Craft Your Value Prop
                 </span>
               </div>
 
-              <div className="text-gray-700 text-xl font-bold font-['Inter'] relative">
+              <div className="text-gray-700 xl:text-xl lg:text-lg font-bold font-['Inter'] relative">
                 This is designed for
                 <span className="h-6 bg-[#ffcb77]/30 border-l-2 mx-1 border-[#ffcb77]">
                   early-stage founders
@@ -67,39 +74,39 @@ const index = () => {
               </div>
 
               <div className="relative my-3">
-                <div className="w-[581px] mb-1 left-0 top-0 text-gray-700 text-xl font-bold font-['Inter']">
+                <div className="xl:w-[581px] mb-1 left-0 top-0 text-gray-700 xl:text-xl lg:text-lg font-bold font-['Inter']">
                   In this first volume we’ll address:
                 </div>
-                <div className="w-[510px] ms-5 top-[32px]">
-                  <span className="text-[#17c3b2] text-xl font-semibold font-['Inter']">
+                <div className="xl:w-[510px] ms-5 top-[32px]">
+                  <span className="text-[#17c3b2] xl:text-xl lg:text-lg font-semibold font-['Inter']">
                     {"->"}
                   </span>
-                  <span className="text-gray-700 text-xl font-semibold font-['Inter']">
+                  <span className="text-gray-700 xl:text-xl lg:text-lg font-semibold font-['Inter']">
                     {" "}
                     Key questions you must answer <br />
                   </span>
-                  <span className="text-[#17c3b2] text-xl font-semibold font-['Inter']">
+                  <span className="text-[#17c3b2] xl:text-xl lg:text-lg font-semibold font-['Inter']">
                     {"->"}
                   </span>
-                  <span className="text-gray-700 text-xl font-semibold font-['Inter']">
+                  <span className="text-gray-700 xl:text-xl lg:text-lg font-semibold font-['Inter']">
                     {" "}
                     Structure secrets <br />
                   </span>
-                  <span className="text-[#17c3b2] text-xl font-semibold font-['Inter']">
+                  <span className="text-[#17c3b2] xl:text-xl lg:text-lg font-semibold font-['Inter']">
                     {"->"}
                   </span>
-                  <span className="text-gray-700 text-xl font-semibold font-['Inter']">
+                  <span className="text-gray-700 xl:text-xl lg:text-lg font-semibold font-['Inter']">
                     {" "}
                     Breakdowns & examples
                   </span>
                 </div>
               </div>
 
-              <div className="w-[611px] top-[375px] text-black text-xl font-normal font-['Inter']">
+              <div className="xl:w-[611px] top-[375px] text-black xl:text-xl lg:text-lg font-normal font-['Inter']">
                 This is the framework I use with SMBs to craft value props that
                 sell—it's the only resource you'll need.
               </div>
-              <div className="w-[521px] my-2 text-black text-xl font-normal font-['Inter']">
+              <div className="xl:w-[521px] my-2 text-black xl:text-xl lg:text-lg font-normal font-['Inter']">
                 Just hit the button, and the guide is yours immediately!
               </div>
 
@@ -131,7 +138,7 @@ const index = () => {
                   </div>
                 </div>
 
-                <button className="w-full md:w-[500px] h-[85px] mt-6 bg-[#17c3b2] rounded-lg shadow border border-[#2b2b2b] ease-in-out hover:bg-[#14a89e] hover:text-white text-black text-2xl font-bold flex justify-center items-center">
+                <button className="w-full 2xl:w-[500px] h-[85px] mt-6 bg-[#17c3b2] rounded-lg shadow border border-[#2b2b2b] ease-in-out hover:bg-[#14a89e] hover:text-white text-black text-2xl font-bold flex justify-center items-center">
                   Get it immediately
                 </button>
               </form>
@@ -139,19 +146,19 @@ const index = () => {
           </div>
 
           {/* Second Section */}
-          <div className="col-span-10 md:col-span-4 relative order-first md:order-none">
-            <div className="w-[417px] h-[604px] top-[47px]">
-              <div className="w-[417px] h-[604px] left-0 top-0 absolute bg-[#2b2b2b] rounded-[10px] border-8 border-[#17c3b2]" />
-              <div className="w-[354px] h-[174px] left-[31px] top-[300px] absolute">
-                <span className="text-[#ffcb77] text-5xl font-bold font-['Inter']">
-                  #1
+          <div className="col-span-0 lg:justify-self-end text-center relative order-first md:order-none">
+            <div className="h-[604px] top-[47px] md:p-0 m-5">
+              <div className="lg:w-[417px] md:w-[320px] sm:w-[500px] w-[400px] h-[604px] left-0 top-0 absolute bg-[#2b2b2b] rounded-[10px] border-8 border-[#17c3b2]" />
+              <div className="lg:w-[354px] md:w-[320px] w-[360px] h-[174px] xl:text-5xl lg:text-3xl md:text-xl text-4xl justify-self-center lg:left-[31px] top-[300px] absolute">
+                <span className="text-[#ffcb77] font-bold font-['Inter']">
+                  #1{' '}
                 </span>
-                <span className="text-white text-5xl font-bold font-['Inter']">
+                <span className="text-white font-bold font-['Inter']">
                   Framework to Craft Your Value Prop
                 </span>
               </div>
-              <div className="w-[292px] h-[79px] left-[82px] top-[118px] absolute text-center text-white text-[21px] font-semibold font-['Inter']">
-                <span className="relative z-10 top-[10px]">
+              <div className="w-[292px] h-[79px] lg:left-[60px] md:left-[15px] left-[50px] top-[100px] absolute text-center text-white lg:text-[21px] md:text-[18px] font-semibold font-['Inter']">
+                <span className="relative z-10 lg:top-[10px] top-[20px]">
                   Dedicated <br /> to Early-Stage Founders
                 </span>
                 <svg
@@ -170,7 +177,7 @@ const index = () => {
                   />
                 </svg>
               </div>
-              <div className="w-[82px] h-6 left-[167px] top-[560px] absolute text-center text-white text-base font-normal font-['Inter']">
+              <div className="w-[82px] h-6 lg:left-[167px] md:left-[120px] left-[160px] top-[560px] absolute text-center text-white text-base font-normal font-['Inter']">
                 VOL 1.0
               </div>
             </div>
