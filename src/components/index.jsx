@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import Loader from "./loader";
+import { pdfUrl, fileURL } from "../utils/constants";
 
 const index = () => {
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const [formData, setFormData] = useState({ Name: "", Email: "" });
   const [loading, setLoading] = useState(false);
-  const pdfUrl = "https://drive.google.com/file/d/1cW9xxZucYY2pAGntr5oDI0SKzWjIG3Sw/view?usp=drive_link"
-  const fileURL ="https://sheet.best/api/sheets/1fa9a6b6-db87-4a0a-a166-23d693217f4f";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,7 +16,7 @@ const index = () => {
     e.preventDefault();
 
 
-    if (formData?.name && formData?.email) {
+    if (formData?.Name && formData?.Email) {
       setLoading(true);
       try {
         const res = await axios.post(fileURL, formData, {
@@ -28,7 +27,7 @@ const index = () => {
         });
 
         console.log("res", res);
-        setFormData({ name: "", email: "" })
+        setFormData({ Name: "", Email: "" })
         setLoading(false);
         openPDF();
         alert("Data saved successfully!");
@@ -117,8 +116,8 @@ const index = () => {
                   <div>
                     <input
                       type="text"
-                      name="name"
-                      value={formData.name}
+                      name="Name"
+                      value={formData.Name}
                       onChange={handleChange}
                       placeholder="Your First Name"
                       className="w-full h-[46px] p-2.5 rounded-lg border border-[#d9d9d9] text-gray-700/50 text-xl font-semibold outline-none bg-transparent"
@@ -129,8 +128,8 @@ const index = () => {
                   <div>
                     <input
                       type="email"
-                      name="email"
-                      value={formData.email}
+                      name="Email"
+                      value={formData.Email}
                       onChange={handleChange}
                       placeholder="Your Email Address"
                       className="w-full h-[46px] p-2.5 rounded-lg border border-[#d9d9d9] text-gray-700/50 text-xl font-semibold outline-none bg-transparent"
