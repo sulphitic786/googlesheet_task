@@ -53,7 +53,7 @@ const index = () => {
         {/* Main Content - Offset by 1 column on both sides, spans 10 columns */}
         <div className="col-span-12 lg:col-start-2 lg:col-span-10 justify-self-center grid gap-2 md:grid-cols-11">
           {/* First Section */}
-          <div className="col-span-6 md:col-span-6 relative md:p-0 ps-5">
+          <div className="col-span-6 md:col-span-6 relative md:p-0 p-5">
             <div>
               <div className="xl:h-[116px] xl:text-5xl lg:text-3xl text-4xl text-center top-[50px]">
                 <span className="text-[#ffcb77] font-bold font-['Inter']">
