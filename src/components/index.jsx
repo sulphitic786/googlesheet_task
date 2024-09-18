@@ -145,10 +145,10 @@ const index = () => {
           </div>
 
           {/* Second Section */}
-          <div className="col-span-0 lg:justify-self-end text-center relative order-first md:order-none">
-            <div className="h-[604px] top-[47px] md:p-0 m-5">
-              <div className="lg:w-[417px] md:w-[320px] sm:w-[500px] w-[400px] h-[604px] left-0 top-0 absolute bg-[#2b2b2b] rounded-[10px] border-8 border-[#17c3b2]" />
-              <div className="lg:w-[354px] md:w-[320px] w-[360px] h-[174px] xl:text-5xl lg:text-3xl md:text-xl text-4xl justify-self-center lg:left-[31px] top-[300px] absolute">
+          <div className="col-span-0 lg:justify-self-end text-center md:relative order-first md:order-none">
+            <div className="md:h-[604px] h-[370px] top-[47px] md:p-0 m-5">
+              <div className="md:h-[604px] h-[370px] xl:w-[465px] lg:w-[345px] md:w-[320px] sm:w-[500px] w-[425px] left-0 top-0 absolute bg-[#2b2b2b] rounded-[10px] border-8 border-[#17c3b2]" />
+              <div className="xl:w-[354px] lg:w-[280px] md:w-[300px] w-[360px] h-[174px] xl:text-5xl lg:text-3xl md:text-1xl text-3xl justify-self-center lg:left-[31px] xl:left-[45px] md:top-[300px] top-[170px] absolute">
                 <span className="text-[#ffcb77] font-bold font-['Inter']">
                   #1{' '}
                 </span>
@@ -156,7 +156,7 @@ const index = () => {
                   Framework to Craft Your Value Prop
                 </span>
               </div>
-              <div className="w-[292px] h-[79px] lg:left-[60px] md:left-[15px] left-[50px] top-[100px] absolute text-center text-white lg:text-[21px] md:text-[18px] font-semibold font-['Inter']">
+              <div className="w-[292px] h-[79px] xl:left-[80px] lg:left-[25px] md:left-[15px] left-[65px] md:top-[100px] top-[30px] absolute text-center text-white lg:text-[21px] md:text-[18px] font-semibold font-['Inter']">
                 <span className="relative z-10 lg:top-[10px] top-[20px]">
                   Dedicated <br /> to Early-Stage Founders
                 </span>
@@ -176,7 +176,7 @@ const index = () => {
                   />
                 </svg>
               </div>
-              <div className="w-[82px] h-6 lg:left-[167px] md:left-[120px] left-[160px] top-[560px] absolute text-center text-white text-base font-normal font-['Inter']">
+              <div className="w-[82px] h-6 xl:left-[190px] lg:left-[140px] md:left-[120px] left-[170px] md:top-[560px] top-[335px] absolute text-center text-white text-base font-normal font-['Inter']">
                 VOL 1.0
               </div>
             </div>
