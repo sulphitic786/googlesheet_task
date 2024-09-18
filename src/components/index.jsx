@@ -147,7 +147,7 @@ const index = () => {
           {/* Second Section */}
           <div className="col-span-0 lg:justify-self-end text-center md:relative order-first md:order-none">
             <div className="md:h-[604px] h-[370px] top-[47px] md:p-0 m-5">
-              <div className="md:h-[604px] h-[370px] xl:w-[465px] lg:w-[345px] md:w-[320px] sm:w-[500px] w-[425px] left-0 top-0 absolute bg-[#2b2b2b] rounded-[10px] border-8 border-[#17c3b2]" />
+              <div className="md:h-[604px] h-[370px] xl:w-[465px] lg:w-[345px] md:w-[320px] sm:w-[500px] w-[400px] left-0 top-0 absolute bg-[#2b2b2b] rounded-[10px] border-8 border-[#17c3b2]" />
               <div className="xl:w-[354px] lg:w-[280px] md:w-[300px] w-[360px] h-[174px] xl:text-5xl lg:text-3xl md:text-1xl text-3xl justify-self-center lg:left-[31px] xl:left-[45px] md:top-[300px] top-[170px] absolute">
                 <span className="text-[#ffcb77] font-bold font-['Inter']">
                   #1{' '}
