@@ -1,0 +1,15 @@
+{
+  "employee": {
+    "sheetURL": "https://script.google.com/macros/s/AKfycbw1bsAcvg96NmO-LtToytBHpG_7KSxp5J94VigM2V2ZXto-iPaE2GbyiXqByG1efUyx/exec",
+    "pdfURL": "https://drive.google.com/file/d/1cW9xxZucYY2pAGntr5oDI0SKzWjIG3Sw/view?usp=drive_link"
+  },
+  "drivers": {
+    "sheetURL": "https://script.google.com/macros/s/AKfycbz1tzbu18iC40oPpXTbmwbQzjQvGBS2Rqjst9SJDLCIrkbo5eGrQFRGR0K6LRecF9zh/exec",
+    "pdfURL": "https://drive.google.com/file/d/1cW9xxZucYY2pAGntr5oDI0SKzWjIG3Sw/view?usp=drive_link"
+  },
+  "admin": {
+    "sheetURL": "https://script.google.com/macros/s/AKfycbz1tzbu18iC40oPpXTbmwbQzjQvGBS2Rqjst9SJDLCIrkbo5eGrQFRGR0K6LRecF9zh/exec",
+    "pdfURL": "https://drive.google.com/file/d/1cW9xxZucYY2pAGntr5oDI0SKzWjIG3Sw/view?usp=drive_link"
+  }
+}
+

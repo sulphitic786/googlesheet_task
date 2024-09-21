@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 import Loader from "./loader";
-import { pdfUrl, fileURL } from "../utils/constants";
+import constants from "../utils/constants";
 
-const index = () => {
+const index = ({ section }) => {
   const [formData, setFormData] = useState({ Name: "", Email: "" });
   const [loading, setLoading] = useState(false);
+  const sheetURL = constants[section]?.sheetURL;
+  const pdfURL = constants[section]?.pdfURL;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,35 +15,47 @@ const index = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const formEle = document.getElementById("myForm"); // Use the correct form ID
+    const formDataB = new FormData(formEle);
 
     if (formData?.Name && formData?.Email) {
       setLoading(true);
-      try {
-        const res = await axios.post(fileURL, formData, {
+      await fetch(
+        sheetURL,
+        {
+          method: "POST",
+          body: formDataB,
+          mode: "cors", // Change this to 'cors'
           headers: {
-            "Content-Type": "application/json", // Ensure JSON content type
+            Accept: "application/json", // Optional: Set if expecting JSON
           },
-          withCredentials: false, // Explicitly prevent sending credentials
+        }
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text(); // or response.json() if your response is in JSON format
+        })
+        .then((data) => {
+          console.log("data", data); // Handle success response here
+          setLoading(false);
+          setFormData({ Name: "", Email: "" });
+          openPDF();
+          alert("Data saved successfully!");
+        })
+        .catch((error) => {
+          console.error("Error saving data", error);
+          setLoading(false);
+          alert("Failed to save data.");
         });
-
-        console.log("res", res);
-        setFormData({ Name: "", Email: "" })
-        setLoading(false);
-        openPDF();
-        alert("Data saved successfully!");
-      } catch (error) {
-        console.error("Error saving data", error);
-        setLoading(false);
-        alert("Failed to save data.");
-      }
     } else {
       alert("Name and email is mandatory.");
     }
   };
 
   const openPDF = () => {
-    window.open(pdfUrl); // This opens the PDF in a new tab
+    window.open(pdfURL); // This opens the PDF in a new tab
   };
 
   return (
@@ -110,7 +123,7 @@ const index = () => {
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="mt-6">
+              <form onSubmit={handleSubmit} id="myForm" className="mt-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Input field for First Name */}
                   <div>
@@ -150,7 +163,7 @@ const index = () => {
               <div className="md:h-[604px] h-[370px] xl:w-[465px] lg:w-[345px] md:w-[320px] sm:w-[500px] w-[415px] left-0 top-0 absolute bg-[#2b2b2b] rounded-[10px] border-8 border-[#17c3b2]" />
               <div className="xl:w-[354px] lg:w-[280px] md:w-[300px] w-[360px] h-[174px] xl:text-5xl lg:text-3xl md:text-1xl text-3xl justify-self-center lg:left-[31px] xl:left-[45px] md:top-[300px] top-[170px] absolute">
                 <span className="text-[#ffcb77] font-bold font-['Inter']">
-                  #1{' '}
+                  #1{" "}
                 </span>
                 <span className="text-white font-bold font-['Inter']">
                   Framework to Craft Your Value Prop
