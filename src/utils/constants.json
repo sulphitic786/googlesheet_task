@@ -4,7 +4,15 @@
     "pdfURL": "https://drive.google.com/file/d/1cW9xxZucYY2pAGntr5oDI0SKzWjIG3Sw/view?usp=drive_link"
   },
   "drivers": {
-    "sheetURL": "https://script.google.com/macros/s/AKfycbz1tzbu18iC40oPpXTbmwbQzjQvGBS2Rqjst9SJDLCIrkbo5eGrQFRGR0K6LRecF9zh/exec",
+    "sheetURL": "https://script.google.com/macros/s/AKfycbyql-Lfxk4xXemMh4br_B0FrkfOaQvID06_O2r7zVbO97G08NrTseYhjceWIPLTBOwj/exec",
+    "pdfURL": "https://drive.google.com/file/d/1cW9xxZucYY2pAGntr5oDI0SKzWjIG3Sw/view?usp=drive_link"
+  },
+  "test": {
+    "sheetURL": "https://script.google.com/macros/s/AKfycbxPfuNfThpNjT2Vk9jy1-4E-A5zi6iCfNNWKOlnL1JJav6tG4npkPKH5Jg98Csz4mY/exec",
+    "pdfURL": "https://drive.google.com/file/d/1cW9xxZucYY2pAGntr5oDI0SKzWjIG3Sw/view?usp=drive_link"
+  },
+  "trucks": {
+    "sheetURL": "https://script.google.com/macros/s/AKfycbyHullL5ymxnYb1Zt9xV-WAeJVgY0NxosyB96GwE-8i2AEq8trYbvr0Rs7OL0qgcqeepA/exec",
     "pdfURL": "https://drive.google.com/file/d/1cW9xxZucYY2pAGntr5oDI0SKzWjIG3Sw/view?usp=drive_link"
   },
   "admin": {

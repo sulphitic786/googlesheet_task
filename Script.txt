@@ -1,0 +1,30 @@
+function doPost(e) {
+  try {
+    // Open the Google Spreadsheet using the URL
+    const sheets = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1wHJYQy_TFaji_WonqvoT3nlmN6mpbQnTcgxC8R7nIwU/edit");
+    
+    // Access the sheet tab by its exact name "Sheet1"
+    const sheet = sheets.getSheetByName("Sheet1");
+    
+    // Check if the sheet exists
+    if (!sheet) {
+      throw new Error("Sheet1 tab not found in the spreadsheet");
+    }
+
+    // Capture data sent from the form (e.g., Name and Email)
+    let data = e.parameter;
+
+    // Append the captured data to the sheet
+    sheet.appendRow([data.Name, data.Email]);
+
+    // Return a success response
+    return ContentService
+      .createTextOutput("Your message was successfully sent to the Google Sheet database!")
+      .setMimeType(ContentService.MimeType.TEXT);
+  } catch (error) {
+    // Return an error response for debugging
+    return ContentService
+      .createTextOutput("Error: " + error.message)
+      .setMimeType(ContentService.MimeType.TEXT);
+  }
+}
